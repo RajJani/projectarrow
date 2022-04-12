@@ -1,0 +1,14 @@
+.home {
+    background-color: lightblue;
+    padding: 10%;
+}
+.headerContainer {
+    text-align: center;
+    padding: 10%;
+    background-color: lightsteelblue;
+}
+
+
+.headerContainer button {
+    background-color: red;
+  }
