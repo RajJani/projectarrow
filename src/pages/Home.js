@@ -4,6 +4,7 @@ import "../styles/home.css";
 import { Button } from "@mui/material";
 import { authProvider } from "../authProvider";
 import { AzureAD, AuthenticationState } from "react-aad-msal";
+import Axios from "axios";
 
 function Home() {
   return (
@@ -12,11 +13,17 @@ function Home() {
       {({ login, logout, authenticationState, error, accountInfo }) => {
         switch (authenticationState) {
           case AuthenticationState.Authenticated:
+            const getsqldata = () => {
+              Axios.get("http://localhost:3001/").then((response) => {
+                window.alert(response)
+              });
+            };
+            getsqldata();
             return (
               <div className="headerContainer">
                 <h1> Funder Work Action Tool </h1>
                 <h2> YOU GOT THIS!! </h2>
-
+                
                 <Button size="medium" variant="contained" onClick={logout}>
                   LOGOUT
                 </Button>
