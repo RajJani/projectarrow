@@ -14,8 +14,11 @@ function Home() {
         switch (authenticationState) {
           case AuthenticationState.Authenticated:
             const getsqldata = () => {
-              Axios.get("http://localhost:3001/").then((response) => {
-                window.alert(response)
+              Axios.get("http://localhost:7071/api/getAppData").then((response) => {
+                const pre = document.querySelector('pre');
+                if(pre) {
+                  pre.textContent = JSON.stringify(response, null, 2); //only works when comment out and back in? race condition?
+                }
               });
             };
             getsqldata();
@@ -23,7 +26,7 @@ function Home() {
               <div className="headerContainer">
                 <h1> Funder Work Action Tool </h1>
                 <h2> YOU GOT THIS!! </h2>
-                
+                <pre></pre>
                 <Button size="medium" variant="contained" onClick={logout}>
                   LOGOUT
                 </Button>
